@@ -1,0 +1,133 @@
+/* styles/globals.css */
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.site-header {
+  background-color: #333;
+  color: white;
+  font-weight: lighter;
+  padding: 0rem 1rem;
+  text-align: left;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+}
+
+.side-nav {
+  width: 15%;
+  background-color: #f4f4f4;
+  padding: 2rem 1rem;
+}
+
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav li {
+  margin-bottom: 1rem;
+}
+
+.side-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.side-nav a:hover {
+  text-decoration: underline;
+}
+
+.page-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: #fafafa;
+}
+
+
+
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th, td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.section-title {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.search-bar button {
+  padding: 0.3rem 0.7rem;
+  border: none;
+  background-color: #2f2f2f;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+}
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.grid-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
