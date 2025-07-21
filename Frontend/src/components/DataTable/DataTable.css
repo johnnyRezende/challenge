@@ -1,0 +1,50 @@
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th, td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+
+
+.header-text-align-center {
+  text-align: center !important;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.section-title {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.search-bar button {
+  padding: 0.3rem 0.7rem;
+  border: none;
+  background-color: #2f2f2f;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}

@@ -26,7 +26,49 @@ describe('Producer award interval Integration Test', () =>
     // Act
     const response = await request(app).get('/producers/award-interval');
 
-    // Assert
-    expect(response.body).toStrictEqual(expectedResult);
+    // Asserting request body and response status
+    expect(response.status).toBe(200)
+    expect(response.body).toHaveProperty('max');
+    expect(response.body).toHaveProperty('min');
+
+    // Asserting request body
+    expectedResult.max.forEach((expectedItem, index) => {
+      const actualItem = response.body.max[index];
+
+      expect(actualItem).toHaveProperty('producer');
+      expect(actualItem).toHaveProperty('interval');
+      expect(actualItem).toHaveProperty('followingWin');
+
+      expect(actualItem.producer).toBe(expectedItem.producer);
+      expect(actualItem.interval).toBe(expectedItem.interval);
+      expect(actualItem.previousWin).toBe(expectedItem.previousWin);
+      expect(actualItem.followingWin).toBe(expectedItem.followingWin);
+
+      // Asserting types
+      expect(Number.isInteger(actualItem.interval)).toBe(true);
+      expect(Number.isInteger(actualItem.previousWin)).toBe(true);
+      expect(Number.isInteger(actualItem.previousWin)).toBe(true);
+
+      expect(typeof actualItem.producer).toBe('string');
+    });
+
+    expectedResult.min.forEach((expectedItem, index) =>
+    {
+      const actualItem = response.body.min[index];
+
+      expect(actualItem).toHaveProperty('producer');
+      expect(actualItem).toHaveProperty('interval');
+      expect(actualItem).toHaveProperty('followingWin');
+
+      expect(actualItem.producer).toBe(expectedItem.producer);
+      expect(actualItem.interval).toBe(expectedItem.interval);
+      expect(actualItem.previousWin).toBe(expectedItem.previousWin);
+      expect(actualItem.followingWin).toBe(expectedItem.followingWin);
+
+      expect(Number.isInteger(actualItem.interval)).toBe(true);
+      expect(Number.isInteger(actualItem.previousWin)).toBe(true);
+      expect(Number.isInteger(actualItem.previousWin)).toBe(true);
+      expect(typeof actualItem.producer).toBe('string');
+    });
   });
 });
