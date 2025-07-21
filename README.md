@@ -1,1 +1,3 @@
-# challenge
+# About this repo:
+
+This project showcases my technical skills in developing Front-end and Back-end applications in the Node environment. Open each folder for a full-detailed description of each project.
