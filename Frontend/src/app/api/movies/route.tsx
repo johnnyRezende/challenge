@@ -16,7 +16,6 @@ export async function GET(
     // Ensuring desc order
     const topThreeStudios = responseStudiosWinCount.data.studios.sort((a: any, b: any) => b.winCount - a.winCount).slice(0, 3);
 
-    debugger
     return NextResponse.json({
       minMaxInterval: maxMinProducersInterval.data,
       multipleWinners: multipleWinners.data.years,

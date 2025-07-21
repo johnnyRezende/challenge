@@ -52,13 +52,13 @@ export default function Dashboard()
             title="Maximum"
             headers={["Producer", "Interval", "Previous Year", "Following Year"]}
             columns={["producer", "interval", "previousWin", "followingWin"]}
-            data={minMaxInterval.min}
+            data={minMaxInterval.max}
           />
           <DataTable
             title="Minimum"
             headers={["Producer", "Interval", "Previous Year", "Following Year"]}
             columns={["producer", "interval", "previousWin", "followingWin"]}
-            data={minMaxInterval.max}
+            data={minMaxInterval.min}
           />
         </div>
         <div className="grid-item">
