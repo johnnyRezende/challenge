@@ -35,6 +35,10 @@ describe('Producer award interval Integration Test', () =>
     expectedResult.max.forEach((expectedItem, index) => {
       const actualItem = response.body.max[index];
 
+      expect(actualItem).toHaveProperty('producer');
+      expect(actualItem).toHaveProperty('interval');
+      expect(actualItem).toHaveProperty('followingWin');
+
       expect(actualItem.producer).toBe(expectedItem.producer);
       expect(actualItem.interval).toBe(expectedItem.interval);
       expect(actualItem.previousWin).toBe(expectedItem.previousWin);
@@ -51,6 +55,10 @@ describe('Producer award interval Integration Test', () =>
     expectedResult.min.forEach((expectedItem, index) =>
     {
       const actualItem = response.body.min[index];
+
+      expect(actualItem).toHaveProperty('producer');
+      expect(actualItem).toHaveProperty('interval');
+      expect(actualItem).toHaveProperty('followingWin');
 
       expect(actualItem.producer).toBe(expectedItem.producer);
       expect(actualItem.interval).toBe(expectedItem.interval);
