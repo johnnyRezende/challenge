@@ -1,14 +1,20 @@
 import './filters.css';
+import React from 'react';
+
 type YesNoSelectProps = {
   value: string,
   onChange: (value: string) => void;
 };
 
-export function YesNoSelect({ value, onChange }: YesNoSelectProps) {
+export function YesNoSelect({ value, onChange }: YesNoSelectProps)
+{
+  if (!onChange){
+    throw new Error("YesNo Select component requires onChange function");
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
-    onChange?.(value); // notify parent if provided
+    onChange(value); // notify parent if provided
   };
 
   return (
@@ -34,6 +40,11 @@ type FilterByYearProps = {
 
 export function FilterByYear({ value, onChange }: FilterByYearProps)
 {
+
+  if (!onChange){
+    throw new Error("FilterByYear Select component requires onChange function");
+  }
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.value);
   };

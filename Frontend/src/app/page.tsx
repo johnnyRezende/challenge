@@ -1,5 +1,5 @@
 'use client'
-
+import React from 'react';
 import DataTable                   from "@/components/DataTable";
 import { useEffect, useState }     from "react";
 import { fetchMovieWinnersByYear } from "@/actions/app.actions";

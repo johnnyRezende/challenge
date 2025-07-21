@@ -1,6 +1,6 @@
 'use client';
 import './DataTable.css'
-
+import React from 'react';
 import { useEffect, useState } from 'react';
 
 type CustomFilter = {
@@ -83,7 +83,7 @@ export default function DataTable<T>({
               }
             }}
           />
-          <button onClick={() => searchHandler(search)}>🔍</button>
+          <button aria-label="Search" onClick={() => searchHandler(search)}>🔍</button>
         </div>
       )}
 

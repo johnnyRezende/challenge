@@ -1,5 +1,6 @@
 'use client'
 import HeaderComponent from "@/components/Header"
+import React from 'react';
 
 export function Provider({children}: any)
 {

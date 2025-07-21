@@ -1,4 +1,5 @@
 'use client'
+import React from 'react';
 import DataTable from "@/components/DataTable";
 import { useEffect, useState } from "react";
 import { fetchAllMovies } from "@/actions/app.actions";

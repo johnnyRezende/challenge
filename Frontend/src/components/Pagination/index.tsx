@@ -1,5 +1,6 @@
 'use client';
 import './pagination.css';
+import React from 'react';
 
 type PaginationProps = {
   totalPages: number;
@@ -11,7 +12,9 @@ export default function Pagination({
   totalPages,
   currentPage,
   onPageChange,
-}: PaginationProps) {
+}: PaginationProps)
+{
+
   const handleClick = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
