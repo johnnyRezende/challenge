@@ -14,7 +14,7 @@ const HeaderComponent = () =>
   return (
     <nav className="side-nav">
       <ul>
-        <li><a href='' onClick={(e)=>handleClick(e, "dashboard")}>Dashboard</a></li>
+        <li><a href='' onClick={(e)=>handleClick(e, "/")}>Dashboard</a></li>
         <li><a href='' onClick={(e)=>handleClick(e, "list")}>List</a></li>
       </ul>
     </nav>

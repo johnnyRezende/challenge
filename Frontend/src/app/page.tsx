@@ -1,95 +1,77 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
 
-export default function Home() {
+import DataTable                   from "@/components/DataTable";
+import { useEffect, useState }     from "react";
+import { fetchMovieWinnersByYear } from "@/actions/app.actions";
+import { getDashboardData }        from "@/actions/app.actions";
+
+export default function Dashboard()
+{
+
+  const [minMaxInterval, setMinMaxInterval]   = useState({min: [], max: []})
+  const [multipleWinners, setMultipleWinners] = useState([])
+  const [topThreeStudios, setTopThreeStudios] = useState([])
+
+  useEffect(() => {
+    getDashboardData().then((result: any) =>
+    {
+      setMinMaxInterval(result.minMaxInterval)
+      setMultipleWinners(result.multipleWinners)
+      setTopThreeStudios(result.topThreeStudios)
+
+    }).catch((error) => {
+      alert(error.message)
+    })
+
+  }, [])
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <>
+      <div className="two-column-grid">
+        <div className="grid-item">
+          <DataTable
+            title="List years with multiple winners"
+            headers={["Year", "Win Count"]}
+            columns={["year", "winnerCount"]}
+            data={multipleWinners}
+          />
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+
+        <div className="grid-item">
+          <DataTable
+            title="Top 3 studios with winners"
+            headers={["name", "Win Count"]}
+            columns={["name", "winCount"]}
+            data={topThreeStudios}
           />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+        </div>
+
+        <div className="grid-item">
+          <h3>Producers with longest and shortest interval between wins</h3>
+          <DataTable
+            title="Maximum"
+            headers={["Producer", "Interval", "Previous Year", "Following Year"]}
+            columns={["producer", "interval", "previousWin", "followingWin"]}
+            data={minMaxInterval.min}
           />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <DataTable
+            title="Minimum"
+            headers={["Producer", "Interval", "Previous Year", "Following Year"]}
+            columns={["producer", "interval", "previousWin", "followingWin"]}
+            data={minMaxInterval.max}
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+        <div className="grid-item">
+          <DataTable
+            title="List movie winners by year"
+            headers={["ID", "Year", "Title"]}
+            columns={["id", "year", "title",]}
+            data={[]}
+            searchable={true}
+            searchFunction={fetchMovieWinnersByYear}
+          />
+        </div>
+      </div>
+    </>
   );
 }
