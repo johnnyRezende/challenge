@@ -2,6 +2,11 @@
 
 A **Single Page Application (SPA)** built with [**Next.js**](https://nextjs.org/) to display movie information from a public API. This app was designed with a focus on responsiveness, performance, and clean code organization.
 
+
+
+https://github.com/user-attachments/assets/c34296cf-0dc9-432e-9188-05693e192e53
+
+
 ---
 
 ## Technologies Used
