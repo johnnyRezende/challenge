@@ -1,9 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import axios from 'axios';
 import { type Movie } from '@/types/movie';
 
 export async function GET(
-  req: NextRequest
 ): Promise<NextResponse>
 {
   try {

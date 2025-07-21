@@ -43,7 +43,7 @@ export default function List()
 
   useEffect(() => {
     changePage({ page: currentPage, pageSize });
-  }, [filteredMovies, currentPage]);
+  }, [filteredMovies, currentPage,]);
 
   useEffect(() =>
   {
