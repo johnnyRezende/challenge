@@ -25,6 +25,8 @@ This project showcases my technical skills in developing **NodeJS Backend Applic
 
 **Data is enriched from [movies.csv](https://github.com/johnnyRezende/challenge/blob/main/Backend/src/database/movies.csv) file to SQLite3 embedded database**
 
+**Database Schemma is implemented in [Models](https://github.com/johnnyRezende/challenge/tree/main/Backend/src/models)**
+
 ## Installation
 
 **Prerequisite**: Node.js **v20+**
