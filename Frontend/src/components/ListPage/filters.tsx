@@ -25,8 +25,8 @@ export function YesNoSelect({ value, onChange }: YesNoSelectProps)
         className=""
       >
         <option value="">Yes/No</option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
       </select>
     </div>
   );

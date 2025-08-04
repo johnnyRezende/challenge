@@ -50,10 +50,10 @@ export default function DataTable<T>({
         return;
       }
       searchFunction(query)
-        .then((result: any) => {
+        .then((result: T[]) => {
           setFilteredData(result);
         })
-        .catch((error: any) => {
+        .catch((error) => {
           alert(error.message);
         });
 
@@ -88,6 +88,11 @@ export default function DataTable<T>({
       )}
 
       <table>
+        <colgroup>
+          {columns.map((_, index) => (
+            <col key={index} style={{ width: `${100 / columns.length}%` }} />
+          ))}
+        </colgroup>
         <thead>
           <tr>
             {headers.map((header, i) => {

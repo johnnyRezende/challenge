@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
-
+import { StudioWinCount } from '@/types/studios';
 
 export async function GET(
 ): Promise<NextResponse> {
@@ -13,7 +13,7 @@ export async function GET(
     const responseStudiosWinCount = await axios.get("https://challenge.outsera.tech/api/movies/studiosWithWinCount");
 
     // Ensuring desc order
-    const topThreeStudios = responseStudiosWinCount.data.studios.sort((a: any, b: any) => b.winCount - a.winCount).slice(0, 3);
+    const topThreeStudios = responseStudiosWinCount.data.studios.sort((a: StudioWinCount, b: StudioWinCount) => b.winCount - a.winCount).slice(0, 3);
 
     return NextResponse.json({
       minMaxInterval: maxMinProducersInterval.data,

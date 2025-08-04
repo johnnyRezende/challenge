@@ -1,8 +1,12 @@
 'use client'
 import HeaderComponent from "@/components/Header"
-import React from 'react';
+import React, {type ReactNode} from 'react';
 
-export function Provider({children}: any)
+type ProviderProps = {
+  children: ReactNode;
+};
+
+export function Provider({children}: ProviderProps)
 {
   return (
     <div className="page-layout">

@@ -1,8 +1,10 @@
 import axios from "axios";
-import { type DashboardData } from "@/types/api";
-import { type fetchMovieWinnersByYear } from "@/types/api";
+import { type FetchDashboardDataResponse } from "@/types/api";
+import { type FetchMovieWinnersByYear } from "@/types/api";
 import { type Movie } from "@/types/movie";
-export async function getDashboardData(): Promise<DashboardData>
+import { FetchMoviesResponse } from "@/types/api";
+
+export async function getDashboardData(): Promise<FetchDashboardDataResponse>
 {
 
   return new Promise((resolve, reject) => {
@@ -13,7 +15,7 @@ export async function getDashboardData(): Promise<DashboardData>
 
 }
 
-export async function fetchMovieWinnersByYear(movie: string): Promise<fetchMovieWinnersByYear>
+export async function FetchMovieWinnersByYear(movie: string): Promise<FetchMovieWinnersByYear>
 {
   return new Promise((resolve, reject) => {
     axios
@@ -25,12 +27,22 @@ export async function fetchMovieWinnersByYear(movie: string): Promise<fetchMovie
   });
 }
 
-export async function fetchAllMovies(): Promise<Movie[]>
+export async function fetchMovies(params: {
+  page: number;
+  winner: string;
+  year: number;
+}): Promise<FetchMoviesResponse>
 {
-    return new Promise((resolve, reject) => {
-      axios
-        .get("/api/movies/all")
-        .then((response) => resolve(response.data))
-        .catch((error)   => reject(new Error(error.response.data.error)));
-    });
+  return new Promise((resolve, reject) => {
+    axios
+      .get("/api/movies/all", {
+        params: {
+          page: params.page,
+          winner: params.winner,
+          year: params.year,
+        },
+      })
+      .then((response) => resolve(response.data))
+      .catch((error) => reject(new Error(error.response.data.error)));
+  });
 }
