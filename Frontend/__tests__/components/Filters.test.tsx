@@ -12,30 +12,30 @@ describe('YesNoSelect component test cases', () =>
     expect(screen.getByText('No')).toBeInTheDocument();
   });
 
-  it('Should call onChange with "yes" when Yes is selected', () =>
+  it('Should call onChange with "true" when option Yes is selected', () =>
   {
     const handleChange = jest.fn();
     render(<YesNoSelect value="" onChange={handleChange} />);
 
-    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'yes' } });
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'true' } });
 
-    expect(handleChange).toHaveBeenCalledWith('yes');
+    expect(handleChange).toHaveBeenCalledWith('true');
   });
 
-  it('Should call onChange with "no" when No is selected', () => {
+  it('Should call onChange with "" when No is selected', () => {
     const handleChange = jest.fn();
     render(<YesNoSelect value="" onChange={handleChange} />);
 
-    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'no' } });
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'false' } });
 
-    expect(handleChange).toHaveBeenCalledWith('no');
+    expect(handleChange).toHaveBeenCalledWith('false');
   });
 
-  it('Should show the current value as yes', () => {
-    render(<YesNoSelect value="yes" onChange={() => {}} />);
+  it('Should show the current value as true', () => {
+    render(<YesNoSelect value="true" onChange={() => {}} />);
 
     const select = screen.getByRole('combobox') as HTMLSelectElement;
-    expect(select.value).toBe('yes');
+    expect(select.value).toBe('true');
   });
 
   it('Should throw an error if no onChange function is provided', () =>
