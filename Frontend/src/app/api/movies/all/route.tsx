@@ -2,11 +2,39 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 import { type Movie } from '@/types/movie';
 
-export async function GET(
-): Promise<NextResponse>
+export async function GET(request: Request): Promise<NextResponse>
 {
   try {
-    const response = await axios.get("https://challenge.outsera.tech/api/movies?page=1&size=100");
+    const { searchParams } = new URL(request.url);
+
+    const page   = searchParams.get('page') ?? '1';
+    const size   = searchParams.get('size') ?? '10';
+    const year   = searchParams.get('year') ?? '0';
+    const winner = searchParams.get('winner') ?? '';;
+
+    const params: {
+      page: string;
+      size: string;
+      year?: string;
+      winner?: string;
+    } = {
+      page,
+      size,
+    };
+
+    if (Number(year)) {
+      params.year = year
+      params.size = '1'
+    }
+
+    if (winner) {
+      params.winner = winner
+    }
+    console.log("Requesting:", axios.getUri({ url: 'https://challenge.outsera.tech/api/movies', params }));
+
+    const response = await axios.get("https://challenge.outsera.tech/api/movies",
+      {params}
+    );
 
     if (response.data.content.length === 0) {
       return NextResponse.json({ error: "No movies" }, { status: 404 });
@@ -17,7 +45,14 @@ export async function GET(
     winner: movie.winner ? 'Yes' : 'No'
     }))
 
-    return NextResponse.json(movies);
+    const result = {
+      content: movies,
+      totalElements: response.data.totalElements,
+      totalPages: response.data.totalPages,
+      pageNumber: response.data.number
+    }
+
+    return NextResponse.json(result);
 
   } catch (error: unknown) {
 

@@ -1,4 +1,5 @@
-export type Producer = string
+import { Producer } from "./producer"
+
 export type Studio = string
 
 export type Movie = {

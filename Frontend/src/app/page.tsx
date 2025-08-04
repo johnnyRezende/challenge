@@ -2,18 +2,19 @@
 import React from 'react';
 import DataTable                   from "@/components/DataTable";
 import { useEffect, useState }     from "react";
-import { fetchMovieWinnersByYear } from "@/actions/app.actions";
+import { FetchMovieWinnersByYear } from "@/actions/app.actions";
 import { getDashboardData }        from "@/actions/app.actions";
+import { type DashboardData } from "@/types/api";
 
 export default function Dashboard()
 {
 
-  const [minMaxInterval, setMinMaxInterval]   = useState({min: [], max: []})
-  const [multipleWinners, setMultipleWinners] = useState([])
-  const [topThreeStudios, setTopThreeStudios] = useState([])
+  const [minMaxInterval, setMinMaxInterval]   = useState<DashboardData["minMaxInterval"]>({ min: [], max: [] });
+  const [multipleWinners, setMultipleWinners] = useState<DashboardData["multipleWinners"]>([])
+  const [topThreeStudios, setTopThreeStudios] = useState<DashboardData["topThreeStudios"]>([])
 
   useEffect(() => {
-    getDashboardData().then((result: any) =>
+    getDashboardData().then((result: DashboardData) =>
     {
       setMinMaxInterval(result.minMaxInterval)
       setMultipleWinners(result.multipleWinners)
@@ -68,7 +69,7 @@ export default function Dashboard()
             columns={["id", "year", "title",]}
             data={[]}
             searchable={true}
-            searchFunction={fetchMovieWinnersByYear}
+            searchFunction={FetchMovieWinnersByYear}
           />
         </div>
       </div>
