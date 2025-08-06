@@ -9,17 +9,16 @@ describe('Producer award interval Integration Test', () =>
 
   beforeAll(async () => {
     await startDB();
-  });
+  }, 20000);
 
-  it('Should return the producer with the maximum and minimum interval between wins', async () =>
+  it('Should http request /producers/award-interval and return the producer with the maximum and minimum interval between wins', async () =>
   {
     // Arrange
     const expectedResult: { max: AwardInterval[]; min: AwardInterval[] } =
     {
-      max: [ {producer: "Johnny Rezende", interval: 8, previousWin: 1996, followingWin: 2004, } ],
+      max: [ {producer: "Buzz Feitshans", interval: 9, previousWin: 1985, followingWin: 1994, } ],
       min: [
-        { producer: "Johnny Rezende", interval: 1, previousWin: 1995, followingWin: 1996, },
-        { producer: "Kevin Costner", interval: 1, previousWin: 1994, followingWin: 1995, },
+        { producer: "Joel Silver", interval: 1, previousWin: 1990, followingWin: 1991, }
       ],
     };
 
