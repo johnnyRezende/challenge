@@ -16,12 +16,14 @@ export default function Pagination({
 {
 
   const handleClick = (page: number) => {
-    if (page >= 1 && page <= totalPages) {
+    if (page >= 0 && page <= totalPages) {
       onPageChange(page);
     }
   };
 
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const pages = Array.from({ length: totalPages }, (_, i) => i);
+  console.log("total pages")
+  console.log(totalPages)
 
   return (
     <div className="pagination">
@@ -46,7 +48,7 @@ export default function Pagination({
       <button
         className="page-button"
         onClick={() => handleClick(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        disabled={currentPage + 1 === totalPages}
       >
         &raquo;
       </button>
