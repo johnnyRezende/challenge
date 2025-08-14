@@ -1,6 +1,6 @@
 'use client';
 import './pagination.css';
-import React from 'react';
+import React, { useState } from 'react';
 
 type PaginationProps = {
   totalPages: number;
@@ -14,10 +14,15 @@ export default function Pagination({
   onPageChange,
 }: PaginationProps)
 {
+  const [nextDisabled, setNextDisabled] = useState(false);
 
   const handleClick = (page: number) => {
     if (page >= 0 && page <= totalPages) {
+      setNextDisabled(true);
       onPageChange(page);
+      setTimeout(() => {
+        setNextDisabled(false);
+      }, 500); // disable for 1 second
     }
   };
 
@@ -28,7 +33,7 @@ export default function Pagination({
       <button
         className="page-button"
         onClick={() => handleClick(currentPage - 1)}
-        disabled={currentPage === 1}
+        disabled={currentPage === 0 || nextDisabled}
       >
         &laquo;
       </button>
@@ -46,7 +51,7 @@ export default function Pagination({
       <button
         className="page-button"
         onClick={() => handleClick(currentPage + 1)}
-        disabled={currentPage + 1 === totalPages}
+        disabled={currentPage + 1 === totalPages || nextDisabled}
       >
         &raquo;
       </button>
