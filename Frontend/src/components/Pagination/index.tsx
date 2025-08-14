@@ -22,8 +22,6 @@ export default function Pagination({
   };
 
   const pages = Array.from({ length: totalPages }, (_, i) => i);
-  console.log("total pages")
-  console.log(totalPages)
 
   return (
     <div className="pagination">
