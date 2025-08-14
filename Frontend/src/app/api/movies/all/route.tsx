@@ -7,7 +7,7 @@ export async function GET(request: Request): Promise<NextResponse>
   try {
     const { searchParams } = new URL(request.url);
 
-    const page   = searchParams.get('page') ?? '1';
+    const page   = searchParams.get('page') ?? '0';
     const size   = searchParams.get('size') ?? '10';
     const year   = searchParams.get('year') ?? '0';
     const winner = searchParams.get('winner') ?? '';;
