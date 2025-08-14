@@ -34,6 +34,7 @@ export default function List()
     const yearNumber = Number(debouncedYear);
     if (!isNaN(yearNumber)) {
       setYearFilter(yearNumber);
+      setCurrentPage(0);
     }
   }, [debouncedYear]);
 
@@ -87,7 +88,6 @@ export default function List()
                 value={yearInput}
                 onChange={(e) => {
                   setYearInput(Number(e))
-                  setCurrentPage(0);
                 }}
               />
             ),
