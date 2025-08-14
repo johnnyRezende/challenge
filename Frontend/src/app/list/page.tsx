@@ -13,13 +13,13 @@ export default function List()
   /**
    * Data to display
    */
-  const [allMovies, setAllMovies]           = useState<Movie[]>([]);
+  const [allMovies, setAllMovies]        = useState<Movie[]>([]);
 
   /**
    * Pagination
    */
-  const [currentPage, setCurrentPage]    = useState(1);
-  const [totalPages, setTotalPages] = useState(0)
+  const [currentPage, setCurrentPage]    = useState(0);
+  const [totalPages, setTotalPages]      = useState(0)
 
   /**
    * Filters
@@ -75,7 +75,7 @@ export default function List()
                 value={winnerFilter}
                 onChange={(e) => {
                   setWinnerFilter(e);
-                  setCurrentPage(1);
+                  setCurrentPage(0);
                 }}
               />
             ),
@@ -87,6 +87,7 @@ export default function List()
                 value={yearInput}
                 onChange={(e) => {
                   setYearInput(Number(e))
+                  setCurrentPage(0);
                 }}
               />
             ),
@@ -94,7 +95,7 @@ export default function List()
         ]}
       />
       <Pagination
-        totalPages={totalPages > 1 ? totalPages - 1 : totalPages}
+        totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={handlePageChange}
       />
