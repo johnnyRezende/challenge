@@ -24,7 +24,7 @@ export async function GET(request: Request): Promise<NextResponse>
 
     if (Number(year)) {
       params.year = year
-      params.size = '1'
+      params.size = '10'
     }
 
     if (winner) {
